@@ -1,0 +1,99 @@
+/* Border (wrapper) and label */
+
+.custom-select-wrapper {
+  /* Variables */
+  --background-color: white;
+  --background-option-color: white;
+  --border-color: black;
+  --border-color-focus: black;
+  --text-color: black;
+  --font-family: inherit;
+  --font-size: 1rem;
+  --border-radius: 0px;
+  --transition-duration: 0s;
+
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
+  position: relative;
+  font-family: var(--font-family);
+  color: var(--font-color);
+  user-select: none;
+}
+
+.custom-select-wrapper:focus-within {
+  border-color: var(--border-color-focus);
+}
+
+.custom-select-label {
+  position: absolute;
+  font-size: 12px;
+  top: -9px;
+  left: 6px;
+  z-index: 1;
+  pointer-events: none;
+  background: var(--background-color);
+  padding: 0 3px;
+}
+
+/* Select */
+
+.custom-select-input {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  border-radius: var(--border-radius);
+  border: none;
+  width: 100%;
+  padding: 3px;
+  overflow: hidden;
+  pointer-events: none;
+  outline: transparent;
+  background: var(--background-color);
+  color: var(--font-color);
+}
+
+/* Tile list and tiles */
+
+.custom-select-tile-list {
+  /* Customize list: */
+  border: 2px solid var(--border-color-focus);
+  margin-top: 0px;
+  border-radius: 0px;
+
+  /* Position: fixed because absolute might be cut by overflow: hidden or z-index */
+  position: fixed;
+  z-index: 1000;
+  margin-left: -2px;
+  transition: var(--transition-duration) transform,
+    0s var(--transition-duration) opacity;
+  transform-origin: top;
+  transform: scaleY(0);
+  background: var(--background-option-color);
+  overflow: hidden;
+  opacity: 0;
+}
+
+.custom-select-wrapper:focus-within > .custom-select-tile-list,
+.custom-select-tile-list:focus {
+  transform: scaleY(1);
+  opacity: 1;
+  transition: var(--transition-duration) transform;
+}
+
+.custom-select-tile {
+  cursor: pointer;
+  padding: 6px;
+  box-sizing: border-box;
+  text-align: start;
+  outline: transparent;
+  border: none;
+  display: block;
+  background: transparent;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  width: 100%;
+}
+
+.custom-select-tile:hover,
+.custom-select-tile:focus {
+  background: #00000022;
+}
