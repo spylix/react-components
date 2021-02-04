@@ -13,7 +13,7 @@ export default class CustomSelect extends Component {
   //  - value - select initial value
   //  - onChange - select onChange
   //  - dontCloseOnClick - (bool) don't close the select list after choosing an option
-  //  - onPointerDown
+  //  - onMouseDown
   // You can add more event handlers to the input as necessary
 
   node;
@@ -39,7 +39,7 @@ export default class CustomSelect extends Component {
       if (select !== activeElement) select.focus();
     }, 0);
     // Handle this.props.onPointerDown if is defined
-    if (this.props.onPointerDown) this.props.onPointerDown(e);
+    if (this.props.onMouseDown) this.props.onMouseDown(e);
   };
 
   addScrollListener = () => {
@@ -48,8 +48,17 @@ export default class CustomSelect extends Component {
     const pos = node.getBoundingClientRect();
     if (!this.tileList)
       this.tileList = node.getElementsByClassName("custom-select-tile-list")[0];
-    if (this.tileList)
-      this.tileList.style.top = `${pos.top + pos.height - 2}px`;
+    // Check if there is enough space below the select to render the list
+    // if not, render it above the select
+    if (window.innerHeight - pos.bottom < this.tileList.offsetHeight) {
+      this.tileList.style.transformOrigin = "bottom";
+      this.tileList.style.top = `calc(${
+        pos.top + 2 - this.tileList.offsetHeight
+      }px)`;
+    } else {
+      this.tileList.style.transformOrigin = "";
+      this.tileList.style.top = `${pos.bottom - 2}px`;
+    }
     // Add scroll event listener on focus
     document.addEventListener("scroll", this.handleScroll);
   };
@@ -60,10 +69,10 @@ export default class CustomSelect extends Component {
   };
 
   handleScroll = () => {
-    // Move the list when scrolling so it's always under the input
+    // Hide the list on scroll
     if (this.tileList) {
-      const pos = this.node.current.getBoundingClientRect();
-      this.tileList.style.top = `${pos.top + pos.height - 2}px`;
+      document.activeElement.blur();
+      this.removeScrollListener();
     }
   };
 
@@ -110,7 +119,7 @@ export default class CustomSelect extends Component {
       <div
         ref={this.node}
         className="custom-select-wrapper"
-        onPointerDown={this.handlePointerDown}
+        onMouseDown={this.handlePointerDown}
       >
         {/* Label */}
         <div className="custom-select-label">{this.props.label}</div>
