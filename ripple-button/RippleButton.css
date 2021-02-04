@@ -1,21 +1,21 @@
 .ripple-button {
   /* Variables */
-  --button-color: #59eb34;
-  --text-color: #000000;
+  --button-color: #03a5fc;
+  --text-color: #ffffff;
+  --font-family: inherit;
 
-  width: 45vw;
-  padding: 10px;
-  box-sizing: border-box;
+  padding: 10px 20px;
+  border-radius: 3px;
   font-size: 1rem;
   background: var(--button-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  box-sizing: border-box;
   border: none;
-  outline: transparent;
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  border-radius: 3px;
-  color: var(--text-color);
   cursor: pointer;
+  z-index: 1;
 }
 
 .ripple-button * {

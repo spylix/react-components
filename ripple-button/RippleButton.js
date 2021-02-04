@@ -78,12 +78,11 @@ export default function RippleButton(props) {
     <button
       className={`ripple-button ${props.className || ""}`}
       id={props.id}
-      style={props.style}
-      // Event handlers
       onClick={props.onClick}
       onPointerDown={startRippleOnClick}
       onPointerUp={handlePointerUp}
       onBlur={handleBlur}
+      style={props.style}
     >
       <div className="ripple-button-background" />
       {props.children}
