@@ -1,0 +1,35 @@
+.ripple-button {
+  /* Variables */
+  --button-color: #59eb34;
+  --text-color: #000000;
+
+  width: 45vw;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background: var(--button-color);
+  border: none;
+  outline: transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 3px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.ripple-button * {
+  pointer-events: none;
+}
+
+.ripple-button-background {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  transform: scale(0);
+}
