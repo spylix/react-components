@@ -1,0 +1,102 @@
+.help-modal {
+  /* Variables */
+  --button-background-color: #03a5fc;
+  --button-text-color: #ffffff;
+  --modal-background-color: #ffffff;
+  --modal-text-color: #000000;
+  --modal-width: 200px;
+  /* Icon size */
+  --background-size: 40px;
+  --icon-size: 24px;
+
+  width: var(--background-size);
+  height: var(--background-size);
+  position: relative;
+  outline: transparent;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Background */
+
+.help-modal::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+  position: absolute;
+  background: #000000;
+  transition: 0.2s;
+  opacity: 0.2;
+  transform: scale(0);
+}
+
+.help-modal:hover::after {
+  opacity: 0.2;
+  transform: scale(1);
+}
+
+.help-modal:focus::after {
+  opacity: 0.1;
+  transform: scale(0.9);
+}
+
+.help-modal-icon {
+  /* Customize the icon */
+  background: var(--button-background-color);
+  border-radius: 50%;
+  border: none;
+
+  /* Change icon size in variables at the beginning of the file */
+  width: var(--icon-size);
+  height: var(--icon-size);
+  top: calc((var(--background-size) - var(--icon-size)) / 2);
+  left: calc((var(--background-size) - var(--icon-size)) / 2);
+
+  color: var(--button-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  pointer-events: none;
+}
+
+.help-modal-content {
+  /* Customize modal */
+  box-shadow: 1px 1px 5px #00000022;
+  border-radius: 4px;
+  padding: 8px 12px;
+
+  width: var(--modal-width);
+  background: var(--modal-background-color);
+  color: var(--modal-text-color);
+  top: var(--background-size); /* Will display under the icon */
+  cursor: default;
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.1s;
+}
+
+.help-modal:hover > .help-modal-content,
+.help-modal:focus > .help-modal-content {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.help-modal-content {
+  text-align: start;
+}
+
+.help-modal-content-title {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  text-align: center;
+}
