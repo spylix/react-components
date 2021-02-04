@@ -2,6 +2,7 @@ import React from "react";
 import "./MaterialInput.css";
 
 export default function MaterialInput(props) {
+  // Add noBorder attribute to the tag if you want to use input with only bottom border
   // props:
   // Necessary:
   //  - placeholder
