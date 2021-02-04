@@ -1,3 +1,7 @@
+.custom-checkbox-wrapper {
+  display: inline;
+}
+
 .custom-checkbox {
   position: absolute;
   pointer-events: none;
@@ -17,7 +21,7 @@
   min-height: var(--size);
   width: var(--size);
   height: var(--size);
-  display: block;
+  display: inline-block;
   border: 2px solid var(--background-color);
   border-radius: 3px;
   transition: 0.1s;
