@@ -10,7 +10,7 @@
   --font-family: inherit;
   --font-size: 1rem;
   --border-radius: 0px;
-  --transition-duration: 0s;
+  --transition-duration: 0.1s;
 
   border-radius: var(--border-radius);
   border: 2px solid var(--border-color);
