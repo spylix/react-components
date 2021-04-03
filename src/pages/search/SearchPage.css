@@ -1,0 +1,33 @@
+#search-body {
+  height: 60vh;
+  flex-direction: column;
+}
+
+#search-input {
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 20px;
+  max-width: calc(100% - 20px);
+}
+
+.search-tip {
+  font-size: 0.8rem;
+  font-style: italic;
+  margin: 0;
+  color: #000000aa;
+  text-align: center;
+}
+
+.search-tip.warning {
+  color: red;
+}
+
+@media screen and (min-width: 500px) {
+  #search-input {
+    font-size: 30px;
+  }
+
+  .search-tip {
+    font-size: 0.9rem;
+  }
+}
